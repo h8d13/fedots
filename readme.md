@@ -28,3 +28,30 @@ EDITOR=micro
 ```
 
 
+
+## Theme
+
+Everything uses micro's `atom-dark` palette.
+
+- `foot/foot.ini` → `~/.config/foot/foot.ini`
+- `sway/theme` → `~/.config/sway/theme`
+
+In `~/.config/sway/config` (copy from `/etc/sway/config` first), add `include ~/.config/sway/theme` near the top, then give the bar block matching colors:
+
+```
+bar {
+    position top
+    status_command while date +'%Y-%m-%d %H:%M'; do sleep 30; done
+
+    colors {
+        background $bg
+        statusline $fg
+        separator  $dim
+        #                  border  bg      text
+        focused_workspace  $blue   $blue   $bg
+        active_workspace   $bg-alt $bg-alt $fg
+        inactive_workspace $bg     $bg     $dim
+        urgent_workspace   $red    $red    $bg
+    }
+}
+```
