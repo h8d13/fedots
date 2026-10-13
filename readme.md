@@ -19,35 +19,10 @@ install_weak_deps=False
 
 ```dnf install git sway foot micro```
 
-`echo 'EDITOR=micro' | sudo tee /etc/environment`
+Set it as default: 
 
-contents of `~/.config/micro/settings.json`
+Contents of `/etc/environment`
 
-```json
-{
-    "colorscheme": "atom-dark",
-    "diffgutter": true,
-    "fakecursor": true,
-    "ft:fish": {
-        "tabstospaces": true
-    },
-    "ft:nim": {
-        "tabstospaces": true
-    },
-    "ft:python": {
-        "tabstospaces": false
-    },
-    "ft:yaml": {
-        "tabsize": 2,
-        "tabstospaces": true
-    },
-    "ftoptions": false,
-    "mkparents": true,
-    "parsecursor": true,
-    "rmtrailingws": true,
-    "savecursor": true,
-    "saveundo": true,
-    "tabsize": 8
-}
-```
+`EDITOR=micro`
+
 
