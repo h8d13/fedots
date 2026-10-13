@@ -13,7 +13,6 @@ contents of `/etc/dnf/dnf.conf`
 max_parallel_downloads=10
 metadata_expire=1d
 install_weak_deps=False
-assumeyes=True
 ```
 
 ## Pkg-config
