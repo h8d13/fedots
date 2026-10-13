@@ -1,0 +1,25 @@
+{
+    "colorscheme": "atom-dark",
+    "diffgutter": true,
+    "fakecursor": true,
+    "ft:fish": {
+        "tabstospaces": true
+    },
+    "ft:nim": {
+        "tabstospaces": true
+    },
+    "ft:python": {
+        "tabstospaces": false
+    },
+    "ft:yaml": {
+        "tabsize": 2,
+        "tabstospaces": true
+    },
+    "ftoptions": false,
+    "mkparents": true,
+    "parsecursor": true,
+    "rmtrailingws": true,
+    "savecursor": true,
+    "saveundo": true,
+    "tabsize": 8
+}
