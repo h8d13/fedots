@@ -1,0 +1,15 @@
+$include /etc/inputrc
+
+# completion listing: type indicators, ls colors, highlight typed prefix
+set visible-stats on
+set colored-stats on
+set colored-completion-prefix on
+set mark-symlinked-directories on
+
+# case-insensitive, list on first Tab
+set completion-ignore-case on
+set show-all-if-ambiguous on
+
+# Up/Down filter history by what is already typed
+"\e[A": history-search-backward
+"\e[B": history-search-forward
