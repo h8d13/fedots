@@ -23,6 +23,8 @@ Set it as default:
 
 Contents of `/etc/environment`
 
-`EDITOR=micro`
+```
+EDITOR=micro
+```
 
 
