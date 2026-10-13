@@ -39,6 +39,8 @@ dnf install -y pipewire wireplumber pipewire-pulseaudio
 systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.service
 ```
 
+Check with `wpctl status`. Volume keys in `sway/config` use `wpctl`.
+
 ## Eye-candy
 
 ### Theme and status bar
@@ -47,7 +49,7 @@ Everything uses micro's `atom-dark` palette.
 
 - `foot/foot.ini` → `~/.config/foot/foot.ini` terminal
 - `sway/config` → `~/.config/sway/config` (vendored from [upstream config.in](https://github.com/swaywm/sway/blob/master/config.in), colors added)
-- `sway/status.sh` → `~/.config/sway/status.sh` (bar text: battery, cpu, memory, load, clock)
+- `sway/status.sh` → `~/.config/sway/status.sh` (bar text: volume, battery, cpu, memory, load, clock)
 
 ### Preview
 

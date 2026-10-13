@@ -5,10 +5,29 @@
 # sleep without forking: read -t on a pipe that never gets data
 exec {sleep_fd}<> <(:)
 
+# volume: asking wpctl costs a fork, so only do it at startup and on USR1
+# (sway's volume keys send it). The handler also writes a newline into the
+# sleep pipe: bash restarts an interrupted read -t *without* its timeout,
+# so this both wakes the loop for an instant redraw and avoids hanging.
+vol=""
+read_vol() {
+    local _ level muted
+    read -r _ level muted <<<"$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null)"
+    [ -n "$level" ] || { vol=""; return; }
+    vol="$((10#${level/./}))%"
+    [ -n "$muted" ] && vol="muted"
+}
+if command -v wpctl >/dev/null; then
+    read_vol
+    trap 'read_vol; echo >&"$sleep_fd"' USR1
+fi
+
 prev_total=0 prev_idle=0
 
 while :; do
     line=""
+
+    [ -n "$vol" ] && line="$line vol $vol |"
 
     # battery
     for bat in /sys/class/power_supply/BAT*; do
@@ -24,12 +43,13 @@ while :; do
     total=$((user + nice + system + idle + iowait + irq + softirq + steal))
     idle=$((idle + iowait))
     dt=$((total - prev_total))
-    if [ "$prev_total" -gt 0 ] && [ "$dt" -gt 0 ]; then
-        cpu="$(( (100 * (dt - (idle - prev_idle)) + dt / 2) / dt ))%"
-    else
+    if [ "$prev_total" -eq 0 ]; then
         cpu="--"  # first tick: no interval to measure yet
+        prev_total=$total prev_idle=$idle
+    elif [ "$dt" -ge 100 ]; then  # skip too-short intervals (signal redraws)
+        cpu="$(( (100 * (dt - (idle - prev_idle)) + dt / 2) / dt ))%"
+        prev_total=$total prev_idle=$idle
     fi
-    prev_total=$total prev_idle=$idle
     line="$line cpu $cpu |"
 
     # memory used (MemTotal - MemAvailable, kB -> G with one decimal)
