@@ -20,7 +20,7 @@ install_weak_deps=False
 ### Pkg-config
 
 ```
-dnf install git sway foot micro
+dnf install -y git sway foot micro
 ```
 
 Set it as default:
@@ -28,14 +28,14 @@ Set it as default:
 Contents of `/etc/environment`
 
 ```
-EDITOR=micro
 TERMINAL=foot
+EDITOR=micro
 ```
 
 ### Sound
 
 ```
-dnf install pipewire wireplumber pipewire-pulseaudio
+dnf install -y pipewire wireplumber pipewire-pulseaudio
 systemctl --user enable --now pipewire.socket pipewire-pulse.socket wireplumber.service
 ```
 
