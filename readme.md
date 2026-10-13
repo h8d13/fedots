@@ -19,6 +19,8 @@ install_weak_deps=False
 
 ```dnf install git sway foot micro```
 
+`echo 'EDITOR=micro' | sudo tee /etc/environment`
+
 contents of `~/.config/micro/settings.json`
 
 ```json
