@@ -2,7 +2,6 @@ $include /etc/inputrc
 
 # completion listing: type indicators, ls colors, highlight typed prefix
 set visible-stats on
-set colored-stats on
 set colored-completion-prefix on
 set mark-symlinked-directories on
 
