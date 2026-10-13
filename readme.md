@@ -48,3 +48,7 @@ Everything uses micro's `atom-dark` palette.
 - `foot/foot.ini` → `~/.config/foot/foot.ini` terminal
 - `sway/config` → `~/.config/sway/config` (vendored from [upstream config.in](https://github.com/swaywm/sway/blob/master/config.in), colors added)
 - `sway/status.sh` → `~/.config/sway/status.sh` (bar text: battery, cpu, memory, load, clock)
+
+### Preview
+
+<img width="1280" height="800" alt="Screenshot_20261013_175456" src="https://github.com/user-attachments/assets/b074343a-bf21-4cc6-9e63-7c0a187c6117" />
