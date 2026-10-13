@@ -24,11 +24,10 @@ set $bg-alt  #2d2f31
 set $fg      #c5c8c6
 set $dim     #7c7c7c
 set $blue    #62b1fe
-set $green   #a6e22e
 set $red     #ff4444
 
 # class                 border  bg      text  indicator child_border
-client.focused          $blue   $blue   $bg   $green    $blue
+client.focused          $blue   $blue   $bg   $blue     $blue
 client.focused_inactive $bg-alt $bg-alt $fg   $bg-alt   $bg-alt
 client.unfocused        $bg     $bg     $dim  $bg       $bg
 client.urgent           $red    $red    $bg   $red      $red
