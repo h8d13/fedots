@@ -22,12 +22,24 @@ if command -v wpctl >/dev/null; then
     trap 'read_vol; echo >&"$sleep_fd"' USR1
 fi
 
+# brightness is read from sysfs every tick (no fork); USR2 only wakes the loop
+trap 'echo >&"$sleep_fd"' USR2
+
 prev_total=0 prev_idle=0
 
 while :; do
     line=""
 
     [ -n "$vol" ] && line="$line vol $vol |"
+
+    # brightness
+    for bl in /sys/class/backlight/*; do
+        [ -r "$bl/brightness" ] || continue
+        read -r cur <"$bl/brightness"
+        read -r max <"$bl/max_brightness"
+        [ "$max" -gt 0 ] && line="$line bri $(( (100 * cur + max / 2) / max ))% |"
+        break  # first panel only
+    done
 
     # battery
     for bat in /sys/class/power_supply/BAT*; do

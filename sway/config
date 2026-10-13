@@ -229,8 +229,9 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioStop exec playerctl stop
 
     # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # USR2 tells status.sh to redraw right away
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl -q set 5%- && pkill -USR2 -x status.sh
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl -q set 5%+ && pkill -USR2 -x status.sh
 
     # Special key to take a screenshot with grim
     bindsym Print exec grim
