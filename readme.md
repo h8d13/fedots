@@ -5,7 +5,9 @@ Starts from https://fedoraproject.org/misc/ "Fedora Everything X"
 **Do not tick any desktop or addons.** Just create user and select disk + keyboard stuff.
 > I like to start at small point and modify each small part that I add.
 
-## Pkg-manager
+## System
+
+### Pkg-manager
 
 contents of `/etc/dnf/dnf.conf`
 ```
@@ -15,24 +17,25 @@ metadata_expire=1d
 install_weak_deps=False
 ```
 
-## Pkg-config
+### Pkg-config
 
 ```dnf install git sway foot micro```
 
-Set it as default: 
+Set it as default:
 
 Contents of `/etc/environment`
 
 ```
 EDITOR=micro
+TERMINAL=foot
 ```
 
+## Eye-candy
 
-
-## Theme
+### Theme and status bar
 
 Everything uses micro's `atom-dark` palette.
 
-- `foot/foot.ini` → `~/.config/foot/foot.ini`
+- `foot/foot.ini` → `~/.config/foot/foot.ini` terminal
 - `sway/config` → `~/.config/sway/config` (vendored from [upstream config.in](https://github.com/swaywm/sway/blob/master/config.in), colors added)
-- `sway/status.sh` → `~/.config/sway/status.sh` (bar text: battery, memory, load, clock)
+- `sway/status.sh` → `~/.config/sway/status.sh` (bar text: battery, cpu, memory, load, clock)
